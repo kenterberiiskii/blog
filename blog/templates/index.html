@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+Заголовок
+{% endblock %}
+{% block body %}
+<h1>
+Hello эвриBODY
+    {% if current_user.is_authenticated %}
+        {{ current_user.username }}
+    {% else %}
+        anon но я не осуждаю)
+    {% endif %}
+</h1>
+{% endblock %}
