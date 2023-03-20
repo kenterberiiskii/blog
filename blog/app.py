@@ -1,3 +1,5 @@
+import os
+from flask_migrate import Migrate
 from flask import Flask, render_template
 from blog.views.users import users_app
 from blog.views.articles import articles_app
@@ -22,3 +24,8 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 
 login_manager.init_app(app)
+
+cfg_name = os.environ.get("CONFIG_NAME") or 'DevConfig'
+app.config.from_object(f"blog.configs.{cfg_name}")
+
+migrate = Migrate(app, db)
