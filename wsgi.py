@@ -1,4 +1,5 @@
-from blog.app import app, db
+
+from blog.app import db, app
 
 
 if __name__ == "__main__":
